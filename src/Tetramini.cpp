@@ -99,9 +99,9 @@ void Tetramini::generaMatrice(){
         matrice[2][1] = '#';
         matrice[2][2] = '#';
     }else if(forma == RETTANGOLO){ 
-        matrice[1][0] = '#';
+        matrice[0][1] = '#';
         matrice[1][1] = '#';
-        matrice[1][2] = '#';
-        matrice[1][3] = '#';
+        matrice[2][1] = '#';
+        matrice[3][1] = '#';
     }
 }

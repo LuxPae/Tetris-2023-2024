@@ -2,7 +2,7 @@
 Una implementazione del classico gioco Tetris in C++ usando ncurses per la TUI.
 
 ## Comandi di Gioco
-- **Freccia SU**: Ruota il pezzo in senso orario
+- **Freccia SU**: Ruota il pezzo
 - **Freccia GIÙ**: Accelera la discesa del pezzo
 - **Freccia SINISTRA**: Muove il pezzo a sinistra
 - **Freccia DESTRA**: Muove il pezzo a destra
