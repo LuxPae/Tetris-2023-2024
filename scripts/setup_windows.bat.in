@@ -1,0 +1,16 @@
+@echo off
+REM Script di configurazione per Windows
+
+REM Verifica se git è installato
+where git >nul 2>nul
+if %ERRORLEVEL% NEQ 0 (
+    echo Git non trovato. Installalo da https://git-scm.com/download/win
+    exit /b 1
+)
+
+REM Clona PDCurses se non esiste
+if not exist PDCurses (
+    git clone https://github.com/wmcbrine/PDCurses.git
+    cd PDCurses\wincon
+    mingw32-make -f mingw32.mak
+) 

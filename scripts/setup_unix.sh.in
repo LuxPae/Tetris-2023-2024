@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Installa le dipendenze necessarie
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS
+    brew install ncurses
+else
+    # Linux
+    sudo apt-get update
+    sudo apt-get install -y libncurses5-dev
+fi 

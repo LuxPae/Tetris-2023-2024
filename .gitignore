@@ -1,0 +1,15 @@
+# Directory di build
+build/
+.vs/
+CMakeFiles/
+*.cmake
+CMakeCache.txt
+
+# File compilati
+*.o
+*.exe
+*.out
+*.app
+
+# File di sistema
+.DS_Store 
