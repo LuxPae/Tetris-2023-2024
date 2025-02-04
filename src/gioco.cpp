@@ -25,29 +25,14 @@ Gioco::~Gioco() {
     delwin(punteggioWin);
 }
 
-/* Inizializza le coppie di colori per ncurses
- * Ogni tetramino ha il suo colore specifico:
- * - I: cyan
- * - J: blu
- * - L: bianco
- * - O: giallo
- * - S: verde
- * - T: magenta
- * - Z: rosso
- * Il colore 8 è usato per i bordi e il testo
- */
+
 void Gioco::inizializzaColori() {
     start_color();
     use_default_colors();
-    // Inizializza coppie di colori (testo, sfondo)
-    init_pair(1, COLOR_BLACK, COLOR_CYAN);    // I
-    //init_pair(2, COLOR_BLACK, COLOR_BLUE);    // J
-    //init_pair(3, COLOR_BLACK, COLOR_WHITE);   // L
-    init_pair(2, COLOR_BLACK, COLOR_YELLOW);  // O
-    //init_pair(5, COLOR_BLACK, COLOR_GREEN);   // S
-    //init_pair(6, COLOR_BLACK, COLOR_MAGENTA); // T
-    //init_pair(7, COLOR_BLACK, COLOR_RED);     // Z
-    init_pair(8, COLOR_WHITE, COLOR_BLACK);   // Bordi e testo
+
+    init_pair(1, COLOR_BLACK, COLOR_CYAN);    
+    init_pair(2, COLOR_BLACK, COLOR_YELLOW);  
+    init_pair(8, COLOR_WHITE, COLOR_BLACK);  
 }
 
 /* Inizializza il gioco:

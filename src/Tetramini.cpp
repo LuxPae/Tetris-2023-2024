@@ -1,7 +1,7 @@
 #include "../include/Tetramini.hpp"
 
 
-Tetramini::Tetramini(int tipo_forma /*, Color c*/){
+Tetramini::Tetramini(int tipo_forma){
     if(tipo_forma == QUADRATO || tipo_forma == RETTANGOLO){
         forma = tipo_forma;
     }else{
@@ -14,7 +14,6 @@ Tetramini::Tetramini(int tipo_forma /*, Color c*/){
         colore = CYAN;
     }
 
-    //colore = c;
     x = 0;
     y = 0;
     generaMatrice();
@@ -55,9 +54,9 @@ void Tetramini::ruota_senso_antiorario(){
 
 bool Tetramini::getBlocco(int i, int j) const {
     if (i < 0 || i >= 4 || j < 0 || j >= 4) {
-        return false; // Se l'indice è fuori dalla matrice, ritorna false
+        return false; 
     }
-    return matrice[i][j] == '#'; // Restituisce true se il blocco è occupato, false altrimenti
+    return matrice[i][j] == '#'; 
 }
 
 int Tetramini::getColore() const {
