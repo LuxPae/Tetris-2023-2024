@@ -1,41 +1,37 @@
 #include "../include/classifica.hpp"
 #define HEADER_SIZE_X 25
 
-//  costruttore
+
 classifica::classifica(char *fileName)
 {
-    //  inizializzo attributi
+    
     this->punteggi = new node;
     this->n_punteggi = 0;
 
-    //  inizializzo il filename
+   
     this->filename = fileName;
 
-    // Apri il file in modalità lettura
+    
     ifstream file_punteggi(this->filename);
     
-    //  uso il flusso aperto verso il file in modalità lettura per leggere riga per riga il file
-    //  su ogni riga ci sarà un punteggio (intero) diverso ottenuto in una delle partite passate
-    //  chiuse e salvate
+   
     int iter;
 
-    //  mentre ci sono ancora righe da leggere --> [iter != 0] (le righe vuote sono NULL, e NULL)
-    //  se si arriva alla fine del file (quindi si ha una riga NULL) [file_punteggi >> iter] verrà
-    //  valutata come NULL, e NULL come intero viene considerato 0 (spiegato molto informalmente)
+    
     while (file_punteggi >> iter) {     
         
-        //  effettuo un inserimento (ordinato in maniera decrescente) nella lista circolare dei punteggi
+        
         punteggi = insert_ordered(punteggi, iter);
        
-       // tengo conto della dimensione della lista dei punteggi
+       
        ++n_punteggi;
     }
 
-    //  chiudo il flusso di lettura creato prima
+    
     file_punteggi.close();
 }
 
-// distruttore
+
 classifica::~classifica() {}
 
 void classifica::drawClassifica(WINDOW *win){
@@ -47,7 +43,7 @@ void classifica::drawClassifica(WINDOW *win){
 
     wrefresh(inner_win);
     
-    // Crea la finestra scrollabile
+    
     keypad(inner_win, TRUE);
     scrollok(inner_win, TRUE);
     curs_set(FALSE);
@@ -117,7 +113,7 @@ void classifica::salvaPunteggi(){
 
 void classifica::inserisciPunteggio(int p) { 
     this->punteggi = insert_ordered(this->punteggi, p);
-    this->n_punteggi++;  // Incrementa il contatore
+    this->n_punteggi++;  
 }
 
 unsigned int classifica::getn_Punteggi(){

@@ -35,7 +35,7 @@ int choice_menu(WINDOW *menu) {
     }
 
 
-    while (choice != 10){   //10 == invio della tastiera
+    while (choice != 10){   
 
         if(highlights == 0) wattron(menu, A_REVERSE);
 
@@ -93,63 +93,63 @@ int choice_menu(WINDOW *menu) {
 }
 
 int main() {
-    // Inizializzazione della libreria ncurses
+    
     initscr();cbreak();noecho();
 
-    // Finestra del gioco [Text-based User Interfaces]
+    
     WINDOW *TUI = newwin(50, 110 , LINES/2 -25, COLS/2 -55);
     
-    // Crea l'oggetto classifica con il percorso corretto
-    char filename[] = "./file.txt";  // Array di char modificabile
+    
+    char filename[] = "./file.txt";  
     classifica my_classifica(filename);
     
     int choice; 
     do {   
-        //grafica del menu iniziale, ritorna 0, 1, 2 in base all'azione che vuole fare l'user
+        
         choice = choice_menu(TUI);
         switch(choice) {
             case 0: {
-                // Pulisce lo schermo del menu
+                
                 wclear(TUI);
                 wrefresh(TUI);
                 
-                // Inizializza il generatore di numeri casuali
+                
                 srand(time(nullptr));
                 
-                // Crea e avvia il gioco
+                
                 Gioco gioco;
                 gioco.inizializza();
                 gioco.esegui();
                 
-                // Aggiunge il punteggio alla classifica
+                
                 int nuovo_punteggio = gioco.getPunteggio();
                 if(nuovo_punteggio > 0) {
                     my_classifica.inserisciPunteggio(nuovo_punteggio);
                     my_classifica.salvaPunteggi();
                 }
                 
-                // Pulisce lo schermo e torna al menu
+               
                 wclear(TUI);
                 wrefresh(TUI);
                 break;
             }
             case 1:
-                // Mostra classifica
-                wclear(TUI);    // Pulisce lo schermo
-                wrefresh(TUI);  // Refresha lo schermo
-                my_classifica.drawClassifica(TUI);  // Disegna la classifica
-                refresh();  // Aggiorna lo schermo
+                
+                wclear(TUI);    
+                wrefresh(TUI);  
+                my_classifica.drawClassifica(TUI);  
+                refresh();  
                 break;
                 
             default: break;
         }
     } while (choice != 2);
     
-    // Salva i punteggi prima di uscire
+    
     my_classifica.salvaPunteggi();
     my_classifica.distruggiPunteggi();
     
-    // Terminazione dello schermo ncurses e fine esecuzione programma
+    
     clear();
     endwin();
 

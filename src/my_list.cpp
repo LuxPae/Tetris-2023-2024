@@ -12,13 +12,13 @@ list head_insert(list l, int el){
 
 
 list insert_ordered(list head, int el) {
-    // Crea un nuovo nodo e inizializza i suoi puntatori
+    
     list newNode = new node;
     newNode->val = el;
     newNode->next = NULL;
     newNode->prev = NULL;
 
-    // Se la lista è vuota o l'elemento è maggiore della testa, il nuovo nodo diventa la nuova testa
+    
     if (head == NULL || el > head->val) {
         newNode->next = head;
         if (head != NULL) {
@@ -27,13 +27,13 @@ list insert_ordered(list head, int el) {
         return newNode;
     }
 
-    // Altrimenti, scorri la lista fino a trovare il punto di inserimento
+    
     list current = head;
     while (current->next != NULL && el <= current->next->val) {
         current = current->next;
     }
 
-    // Inserisce il nuovo nodo tra current e current->next
+    
     newNode->next = current->next;
     if (current->next != NULL) {
         current->next->prev = newNode;
@@ -46,10 +46,10 @@ list insert_ordered(list head, int el) {
 
 void print_reverse_helper(list head, ofstream& outputFile) {
     if (head->next != NULL) {
-        // Chiamata ricorsiva sulla coda della lista
+        
         print_reverse_helper(head->next, outputFile);
         
-        // Stampa il valore del nodo corrente sul file
+        
         outputFile << head->val << endl;
     }
 }
