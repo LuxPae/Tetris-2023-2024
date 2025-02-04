@@ -1,13 +1,20 @@
 #include "../include/Tetramini.hpp"
 
 
-Tetramini::Tetramini(int tipo_forma, Color c){
+Tetramini::Tetramini(int tipo_forma /*, Color c*/){
     if(tipo_forma == QUADRATO || tipo_forma == RETTANGOLO){
         forma = tipo_forma;
     }else{
         forma = QUADRATO;
     }
-    colore = c;
+
+    if (forma == QUADRATO) {
+        colore = YELLOW;
+    } else if (forma == RETTANGOLO) {
+        colore = CYAN;
+    }
+
+    //colore = c;
     x = 0;
     y = 0;
     generaMatrice();
@@ -53,7 +60,7 @@ bool Tetramini::getBlocco(int i, int j) const {
     return matrice[i][j] == '#'; // Restituisce true se il blocco è occupato, false altrimenti
 }
 
-Color Tetramini::getColore() const {
+int Tetramini::getColore() const {
     return colore;
 }
 

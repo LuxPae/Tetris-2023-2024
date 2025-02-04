@@ -38,14 +38,15 @@ Gioco::~Gioco() {
  */
 void Gioco::inizializzaColori() {
     start_color();
+    use_default_colors();
     // Inizializza coppie di colori (testo, sfondo)
     init_pair(1, COLOR_BLACK, COLOR_CYAN);    // I
-    init_pair(2, COLOR_BLACK, COLOR_BLUE);    // J
-    init_pair(3, COLOR_BLACK, COLOR_WHITE);   // L
-    init_pair(4, COLOR_BLACK, COLOR_YELLOW);  // O
-    init_pair(5, COLOR_BLACK, COLOR_GREEN);   // S
-    init_pair(6, COLOR_BLACK, COLOR_MAGENTA); // T
-    init_pair(7, COLOR_BLACK, COLOR_RED);     // Z
+    //init_pair(2, COLOR_BLACK, COLOR_BLUE);    // J
+    //init_pair(3, COLOR_BLACK, COLOR_WHITE);   // L
+    init_pair(2, COLOR_BLACK, COLOR_YELLOW);  // O
+    //init_pair(5, COLOR_BLACK, COLOR_GREEN);   // S
+    //init_pair(6, COLOR_BLACK, COLOR_MAGENTA); // T
+    //init_pair(7, COLOR_BLACK, COLOR_RED);     // Z
     init_pair(8, COLOR_WHITE, COLOR_BLACK);   // Bordi e testo
 }
 
@@ -82,8 +83,8 @@ void Gioco::inizializza() {
     box(punteggioWin, 0, 0);
     
     // Crea primo tetramino
-    Color colore = (rand() % 2 == QUADRATO) ? YELLOW : CYAN;
-    tetraminoCorrente = new Tetramini(rand() % 2, colore);
+    //int colore = (rand() % 2 == QUADRATO) ? YELLOW : CYAN;
+    tetraminoCorrente = new Tetramini(rand() % 2 /*, colore*/);
 }
 
 /* Controlla se il tetramino corrente collide con:
@@ -213,8 +214,8 @@ bool Gioco::muoviTetraminoGiu() {
         bloccaTetramino();
         controllaLinee();
         delete tetraminoCorrente;
-        Color colore = (rand() % 2 == QUADRATO) ? YELLOW : CYAN;
-        tetraminoCorrente = new Tetramini(rand() % 2, colore);
+        //Color colore = (rand() % 2 == QUADRATO) ? YELLOW : CYAN;
+        tetraminoCorrente = new Tetramini(rand() % 2 /*, colore*/);
         // Posiziona il nuovo tetramino al centro in alto
         tetraminoCorrente->setX((LARGHEZZA_CAMPO / 2) - 2);
         tetraminoCorrente->setY(0);

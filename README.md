@@ -21,10 +21,10 @@ Una implementazione del classico gioco Tetris in C++ usando ncurses per la TUI.
 4. Il gioco termina quando un nuovo pezzo non può essere posizionato in cima
 
 ## Implementazione Tetramini
-I tetramini sono implementati usando il **Factory Method Pattern**:
-   - La classe `tetramino_factory.cpp` crea i diversi tipi di tetramini
-   - Ogni tetramino è una classe derivata dalla classe base `tetramino.cpp`
-   - I tetramini, essendo che hanno un colore e una logica di rotazione diversa, sono stati implementati in classi separate tramite ereditarietà e polimorfismo nel file `tetramini_specifici.cpp`
+I tetramini sono implementati in una classe unica che gestisce le diverse forme e colori:
+   - La classe Tetramini, definita in `Tetramini.hpp` ed implementata in `Tetramini.cpp`, rappresenta un tetramino e distingue tra la forma **quadrata** e la forma **rettangolare** tramite costanti #define. 
+   - Ogni tetramino ha un attributo colore, assegnato nel costruttore in base alla forma.
+   - La rappresentazione della forma dei tetramini avviene tramite una matrice 4x4, permettendo di gestire la disposizione dei blocchi e le rotazioni.
 
 
 ## Sistema di Collisioni
